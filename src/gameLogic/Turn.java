@@ -2,7 +2,7 @@ package gameLogic;
 import java.util.ArrayList;
 
 
-// Test Push for Jords
+// Test Push for Jords tikmes 2
 
 public class Turn {
 	static ArrayList<Player> players;
