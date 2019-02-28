@@ -22,7 +22,7 @@ public class Driver {
 //			p2.drawNumber();
 //			System.out.println(p2.drawnNumbers.get(i));
 //		}
-//		
+//		test
 //		ArrayList<Boolean> test = new ArrayList<Boolean>();
 //		test = SubsetFinder.isSubset(p1, p2, test);
 		
