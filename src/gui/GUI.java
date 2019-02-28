@@ -2,6 +2,7 @@ package gui;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,9 +13,10 @@ public class GUI extends JFrame {
 	JPanel pnlPlayer, TITLE, pnlCount;
 	Grid pnlGrid;
 	JButton btnDraw, btnExit;
-	JLabel lblPlayerName, lblPlayerHand[], lblAvailableNumbers[], lblWinCount, lblTITLE;
+	JLabel lblPlayerName, lblPlayerHand[], lblWinCount, lblTITLE;
 	int winCount = 0;
 	int x, y;
+	ArrayList<JLabel> labelList;
 	String title = "IYENGAR'S FOUR PLAYER GAME";
 	Font f;
 	Graphics graphics;
@@ -72,15 +74,6 @@ public class GUI extends JFrame {
 		pnlGrid.setBackground(Color.GRAY);
 		pnlGrid.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 				
-		lblAvailableNumbers = new JLabel[20];
-		
-		for(int i = 0; i < lblAvailableNumbers.length; i++) {
-			int z = i;
-			int y = z + 1;
-			String x = "" + y;
-			lblAvailableNumbers[i] = new JLabel(x);
-		}
-		
 		lblPlayerHand = new JLabel[20];
 		
 		lblWinCount = new JLabel();
@@ -100,8 +93,24 @@ public class GUI extends JFrame {
 		pnlPlayer.add(btnDraw, BorderLayout.SOUTH);
 		pnlPlayer.add(lblPlayerName, BorderLayout.NORTH);
 		
-		for(int i = 0; i < lblAvailableNumbers.length; i++) {
-			pnlPlayer.add(lblAvailableNumbers[i]);
+		labelList = this.ButtonGenerator();
+		
+		int x = 5, y = 120;
+		for(int i = 0; i < labelList.size(); i++) {
+			JLabel temp = new JLabel();
+			temp = labelList.get(i);
+			temp.setSize(35, 35);
+			
+			pnlPlayer.add(temp);
+			x = x + 35;
+			temp.setLocation(x, y);
+			if(i == 4 || i == 9 || i == 14) {
+				x = 5;
+				y += 50;
+			}else if(i == 19){
+				temp.setLocation(200, 270);
+				temp.setForeground(Color.WHITE);
+			}
 		}
 		//pnlPlayer.add(lblPlayerName, BorderLayout.WEST);
 		
@@ -168,4 +177,19 @@ public class GUI extends JFrame {
 //		}
 //		
 //	}
+	
+	public ArrayList <JLabel> ButtonGenerator(){
+		
+		ArrayList<JLabel> labelList1 = new ArrayList<JLabel>();
+		
+		for(int i = 1; i < 21; i++) {
+			
+			String temp = "" + i;
+			JLabel button = new JLabel(temp);
+			
+			labelList1.add(button);
+			
+		}	
+		return labelList1;
+	}
 }
