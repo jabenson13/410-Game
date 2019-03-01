@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import gui.GUI;
+import gui.Listener;
+
 public class Player {
 	
 	int playerID;
@@ -11,10 +14,16 @@ public class Player {
 	ArrayList<Integer> nonDrawnNumbers;
 	int handsize;
 	int points;
-	
+	Listener myListener;
 	
 	// constructor
-	public Player(int pID, String name, int pts) {
+	public Player(int pID, String name, int pts, Listener l) {
+		GUI myGUI = new GUI("Player " + pID);
+		myListener = l;
+		
+		myGUI.setListener(myListener);
+		myListener.setGUI(myGUI);
+		
 		playerID = pID;
 		playerName = name;
 		points = pts;

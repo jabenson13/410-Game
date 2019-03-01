@@ -1,6 +1,8 @@
 package gameLogic;
 import java.util.ArrayList;
 
+import gui.Listener;
+
 public class Game {
 	
 	int gameID;
@@ -10,6 +12,7 @@ public class Game {
 	static ArrayList<Player> players;
 	static ArrayList<Round> rounds;
 	static int roundCount = 0;
+	Listener list;
 	
 	// constructor
 	public Game(int gID, int pCount) {
@@ -20,14 +23,15 @@ public class Game {
 	public void initializeGame() {
 		// initialize Player
 		players = new ArrayList<Player>();
+		list = new Listener();
 		
-		p1 = new Player(1, null, 0); // the name would be given from the initial start by the GUI - done later
+		p1 = new Player(1, null, 0, list); // the name would be given from the initial start by the GUI - done later
 		players.add(p1);
-		p2 = new Player(2, null, 0);
+		p2 = new Player(2, null, 0, list);
 		players.add(p2);
-		p3 = new Player(3, null, 0);
+		p3 = new Player(3, null, 0, list);
 		players.add(p3);
-		p4 = new Player(4, null, 0);
+		p4 = new Player(4, null, 0, list);
 		players.add(p4);
 		
 		newRound();
