@@ -15,7 +15,6 @@ import server.Logic;
 
 /**
  * Server.java
- * @author Sean Joyce
  *
  * Feb 28, 2019
  * 

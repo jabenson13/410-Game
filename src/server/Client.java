@@ -8,12 +8,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Inet4Address;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
  * CLient.java
- * @author Sean Joyce
  *
  * Feb 28, 2019
  * 
@@ -22,7 +22,7 @@ public class Client {
 	
 	public static void main(String[] args) throws IOException {
         
-	       
+		System.out.println(Inet4Address.getLocalHost().getHostAddress());  
 
         String hostName = "127.0.0.1";
         int portNumber = 8000;

@@ -6,7 +6,6 @@ package server;
 
 /**
  * Logic.java
- * @author Sean Joyce
  *
  * Feb 28, 2019
  * 
@@ -22,7 +21,7 @@ public class Logic {
 	
 		int num = Integer.parseInt(inputLine);
 		
-		return(num*num);
+		return(num*num*num);
 	}
 	
 	public String stringReverse(String inputLine) {
