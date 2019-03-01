@@ -32,11 +32,22 @@ public class Server {
 	        		
 	            Socket clientSocket = serverSocket.accept();     
 	        		
-	            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true); 
+	            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 	        		
 	            BufferedReader in = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
+
 	        		
 	        ) {
+	        	boolean g = true;
+	        	while(g == true) {
+	        		try {
+	        			
+	        		}catch(Exception e) {
+	        			e.getMessage();
+	        		}
+	        	}
+	        	
+	        	
 	            String inputLine;
 	            while ((inputLine = in.readLine()) != null) {
 	            	try {
