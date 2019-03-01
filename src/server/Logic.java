@@ -41,7 +41,7 @@ public class Logic {
 	
 	
 	
-
+	
     public void popup() {
         final JFrame parent = new JFrame();
         JButton button = new JButton();

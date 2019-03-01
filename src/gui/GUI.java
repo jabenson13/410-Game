@@ -126,11 +126,22 @@ public class GUI extends JFrame {
 		//pnlPlayer.add(lblPlayerName, BorderLayout.WEST);
 		
 		//EAST ADD TO PANEL
-		pnlCount.add(lblWinCount, BorderLayout.NORTH);
-		pnlCount.setLayout(new FlowLayout());
+		JLabel tempLabel = new JLabel("");
+		pnlCount.setLayout(new GridLayout(10,1));
+		pnlCount.add(lblWinCount);
+		
+		lblTurnCount.setLocation(300, 300);
+		
 		pnlCount.add(lblTurnCount);
 		pnlCount.add(lblGameCount);
-		pnlCount.add(btnExit, BorderLayout.SOUTH);
+		pnlCount.add(tempLabel);
+		pnlCount.add(tempLabel);
+		pnlCount.add(tempLabel);
+		pnlCount.add(tempLabel);
+		pnlCount.add(tempLabel);
+		pnlCount.add(tempLabel);
+		pnlCount.add(tempLabel);
+		pnlCount.add(btnExit);
 
 		
 		//CENTER ADD TO PANEL
