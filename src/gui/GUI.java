@@ -164,7 +164,7 @@ public class GUI extends JFrame {
 		btnExit.addActionListener(l);
 	}
 	
-	public void updateGrid(String p1, String p2) {
+	public void updateGrid(int p1, int p2) {
 		pnlGrid.updateGrid(p1, p2);
 	}
 	
