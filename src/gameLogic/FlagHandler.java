@@ -1,6 +1,8 @@
 package gameLogic;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import gui.Interface;
 
 public class FlagHandler {
@@ -70,11 +72,12 @@ public class FlagHandler {
 	public static boolean isRoundDone (ArrayList<Boolean> flags) {
 		boolean isDone = false;
 		int count = 0;
+		int winnerID = 0;
 		for(int p = 0; p < 4; p++) {
 			count = 0;
-			for(int i = p*4; i < (p*4)+4; p++) {
+			for(int i = p*4; i < (p*4)+4; i++) {
 				
-				if(flags.get(p) == false) {
+				if(flags.get(i) == false) {
 					break;
 				}else {
 					count++;
@@ -84,6 +87,10 @@ public class FlagHandler {
 				}
 			}
 			if(isDone == true) {
+				winnerID = p+1;
+				
+				JOptionPane.showMessageDialog(null, "Player " + winnerID + " has won!!!");
+				System.out.println(winnerID + " has won !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 				break;
 			}
 			
