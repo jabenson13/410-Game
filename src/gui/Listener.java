@@ -45,7 +45,6 @@ public class Listener implements ActionListener {
 			else {
 				Turn.turnSequence(index);
 			}
-			
 		}
 		else if(clicked.getText().equals("Exit Game")) {
 			System.exit(0);

@@ -18,7 +18,7 @@ public class Round {
 		roundCount = rNumber;
 		players = p;
 		
-		flags = FlagHandler.flagReset();
+		flags = FlagHandler.flagReset(roundCount);
 		turns = new ArrayList<Turn>();
 		turnCount = 0;
 		

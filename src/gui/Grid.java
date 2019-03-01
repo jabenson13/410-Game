@@ -17,7 +17,7 @@ public class Grid extends JPanel{
 	static final int bord = 1;
 	static LineBorder Border = new LineBorder(Color.BLACK,bord);
 	Font f = new Font("Sans Serif", Font.BOLD, 100);
-	Font g = new Font("Times New Roman", Font.BOLD, 125);
+	static Font g = new Font("Times New Roman", Font.BOLD, 125);
 	
 	public Grid(int col, int row) {		
 		columns = col;
@@ -78,43 +78,9 @@ public class Grid extends JPanel{
             }
         }
 	}
-	public void updateGrid(String p1, String p2) {
-		if(p1.equals("Player 1") && p2.equals("Player 2")) {
-			cells[1][2].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 1") && p2.equals("Player 3")) {
-			cells[1][3].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 1") && p2.equals("Player 4")) {
-			cells[1][4].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 2") && p2.equals("Player 1")) {
-			cells[2][1].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 2") && p2.equals("Player 3")) {
-			cells[2][3].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 2") && p2.equals("Player 4")) {
-			cells[2][4].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 3") && p2.equals("Player 1")) {
-			cells[3][1].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 3") && p2.equals("Player 2")) {
-			cells[3][2].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 3") && p2.equals("Player 4")) {
-			cells[3][4].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 4") && p2.equals("Player 1")) {
-			cells[4][1].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 4") && p2.equals("Player 2")) {
-			cells[4][2].setForeground(Color.GREEN);
-		}
-		else if(p1.equals("Player 4") && p2.equals("Player 3")) {
-			cells[4][3].setForeground(Color.GREEN);
-		}
+	public static void updateGrid(int p1, int p2) {
+		cells[p1][p2].setForeground(Color.GREEN);
+
 	}
 	public String checkWin() {
 		// TODO Auto-generated method stub
@@ -135,9 +101,19 @@ public class Grid extends JPanel{
 		
 		return win;
 	}
-	public void reset() {
+	
+	public static void reset() {
 		for(int i = 0; i < 5; i++) {
 			for(int j = 0; j < 5; j++) {
+				
+//				cells[i][j] = new JTextField() {
+//                    @Override
+//                    public Dimension getPreferredSize() {
+//                        return new Dimension(20, 20);
+//                    }
+//                };
+//                cells[i][j].setEditable(false);
+				
 				if(i == 0 && j == 0) {
                 	cells[i][j].setText("");
                 }

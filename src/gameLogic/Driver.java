@@ -26,12 +26,12 @@ public class Driver {
 //		ArrayList<Boolean> test = new ArrayList<Boolean>();
 //		test = SubsetFinder.isSubset(p1, p2, test);
 		
+		
 		Game g1 = new Game(1, 4);
 		g1.initializeGame();
 		
 		GUI gameDisplay1 = new GUI("Player 1");
 		Listener myListener1 = new Listener();
-		Listener myListener2 = new Listener();
 		
 		gameDisplay1.setListener(myListener1);
 		myListener1.setGUI(gameDisplay1);

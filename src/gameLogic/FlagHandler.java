@@ -1,6 +1,8 @@
 package gameLogic;
 import java.util.ArrayList;
 
+import gui.Interface;
+
 public class FlagHandler {
 	
 	public static ArrayList<Boolean> isSubset (Player p1, Player p2, ArrayList<Boolean> flags) {
@@ -13,6 +15,7 @@ public class FlagHandler {
 			index = (Player1.playerID - 1) * 4;
 			index = index + (Player2.playerID - 1);
 			flags.set(index, true);
+			Interface.updateGUIFlags(Player1.playerID, Player2.playerID);
 			//System.out.println("A flag has been updated");
 		}
 		if (Player2.drawnNumbers.containsAll(Player1.drawnNumbers)) {
@@ -28,7 +31,7 @@ public class FlagHandler {
 		return flags;
 	}
 	
-	public static ArrayList<Boolean> flagReset (){ // resets the flags to their default values
+	public static ArrayList<Boolean> flagReset (int roundCount){ // resets the flags to their default values
 		ArrayList<Boolean> flags = new ArrayList<Boolean>();
 		for(int i=0; i<16; i++) {
 			if(i % 5 == 0) {
@@ -38,7 +41,9 @@ public class FlagHandler {
 				flags.add(false);
 			}
 		}
-		
+		if (roundCount != 1) {
+			Interface.resetGrid();
+		}
 		return flags;
 	}
 //	public static boolean isRoundDone (ArrayList<Boolean> flags){
