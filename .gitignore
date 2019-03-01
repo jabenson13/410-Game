@@ -2,9 +2,3 @@
 .classpath
 .project
 .settings/org.eclipse.jdt.core.prefs
-*.class
-*.class
-*.class
-bin/gameLogic/Driver.class
-*.class
-*.class
