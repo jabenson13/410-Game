@@ -46,15 +46,6 @@ public class Listener implements ActionListener {
 				Turn.turnSequence(index);
 			}
 			
-			Random rnd = new Random();
-			int x = rnd.nextInt(4) + 1;
-			int y = rnd.nextInt(4) + 1;
-			
-			String i = "Player " + x;
-			String e1 = "Player " + y;
-			g.updateGrid(i, e1);
-			
-			g.checkWin();
 		}
 		else if(clicked.getText().equals("Exit Game")) {
 			System.exit(0);
