@@ -13,7 +13,7 @@ public class GUI extends JFrame {
 	JPanel pnlPlayer, TITLE, pnlCount;
 	Grid pnlGrid;
 	JButton btnDraw, btnExit;
-	JLabel lblPlayerName, lblPlayerHand[], lblWinCount, lblTITLE;
+	JLabel lblPlayerName, lblPlayerHand[], lblWinCount, lblTITLE, lblTurnCount, lblGameCount;
 	int winCount = 0;
 	int x, y;
 	ArrayList<JLabel> labelList;
@@ -69,16 +69,27 @@ public class GUI extends JFrame {
 		btnExit = new JButton("Exit Game");
 		btnExit.setPreferredSize(new Dimension(100, 50));
 		
+		//lbl game count lbl turncount
+		//need to add the values for these that we will show the user.
+		lblTurnCount = new JLabel();
+		lblTurnCount.setText("Turn Count: ");
+		lblTurnCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		lblGameCount = new JLabel();
+		lblGameCount.setText("Game Count: ");
+		lblGameCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		lblWinCount = new JLabel();
+		lblWinCount.setText("Win Count: " + winCount);
+		lblWinCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		
 		//CENTER
 		pnlGrid = new Grid(5,5);
 		pnlGrid.setBackground(Color.GRAY);
 		pnlGrid.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 				
 		lblPlayerHand = new JLabel[20];
-		
-		lblWinCount = new JLabel();
-		lblWinCount.setText("Win Count: " + winCount);
-		lblWinCount.setFont(new Font("Sans Serif", Font.BOLD, 30));
 		
 		//NORTH ADD TO PANEL
 		lblTITLE = new JLabel(title, SwingConstants.CENTER);
@@ -116,7 +127,11 @@ public class GUI extends JFrame {
 		
 		//EAST ADD TO PANEL
 		pnlCount.add(lblWinCount, BorderLayout.NORTH);
+		pnlCount.setLayout(new FlowLayout());
+		pnlCount.add(lblTurnCount);
+		pnlCount.add(lblGameCount);
 		pnlCount.add(btnExit, BorderLayout.SOUTH);
+
 		
 		//CENTER ADD TO PANEL
 				
