@@ -5,7 +5,7 @@ import gui.GUI;
 import gui.Listener;
 
 public class Driver {
-// pussy lips
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		Player p1 = new Player(0, null, 0);
