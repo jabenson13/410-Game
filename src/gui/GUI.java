@@ -40,7 +40,7 @@ public class GUI extends JFrame {
 		TITLE.setLayout(new BorderLayout());
 		TITLE.setPreferredSize(new Dimension(x, 96));
 		TITLE.setSize(x, 96);
-		TITLE.setBackground(Color.GRAY);
+		TITLE.setBackground(Color.darkGray);
 		TITLE.setBorder(BorderFactory.createMatteBorder(5, 0, 5, 0,Color.black));
 		try {
 			Image titleBackground = ImageIO.read(new File("background-title.png"));
@@ -50,6 +50,8 @@ public class GUI extends JFrame {
 			titlePanel.setLayout(new BorderLayout());
 			titlePanel.setPreferredSize(new Dimension(x, 500));
 			titlePanel.setVisible(true);
+			titlePanel.setBorder(BorderFactory.createMatteBorder(0, 0, 5, 0, Color.BLACK));
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +63,8 @@ public class GUI extends JFrame {
 		pnlPlayer.setPreferredSize(new Dimension((x / 4), (y / 5) * 4));
 		GridBagConstraints c = new GridBagConstraints();
 		pnlPlayer.setLayout(new GridBagLayout());
-		pnlPlayer.setBackground(Color.GRAY);	
+		pnlPlayer.setBackground(Color.darkGray);	
+		pnlPlayer.setForeground(Color.WHITE);
 		pnlPlayer.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 0));
 		
 		//WEST PANEL CONTENTS
@@ -70,11 +73,13 @@ public class GUI extends JFrame {
 		btnDraw.setPreferredSize(new Dimension((1/4)*x, 2*rowheight));	
 		
 		lblPlayerName = new JLabel();
+		lblPlayerName.setForeground(Color.WHITE);
 		pnlPlayer.add(lblPlayerName);
 		lblPlayerName.setText(player);
 		lblPlayerName.setFont(f);
 		lblMiscInfo = new JLabel();
 		lblMiscInfo.setText("TEST");
+		lblMiscInfo.setForeground(Color.WHITE);
 		lblMiscInfo.setFont(f);
 		
 		c.weightx = 1.0;
@@ -129,7 +134,7 @@ public class GUI extends JFrame {
 		pnlCount.setPreferredSize(new Dimension((x / 4), (y / 5) * 4));
 		c = new GridBagConstraints();
 		pnlCount.setLayout(new GridBagLayout());
-		pnlCount.setBackground(Color.GRAY);	
+		pnlCount.setBackground(Color.darkGray);	
 		
 		//EAST PANEL CONTENTS
 		btnExit = new JButton("Exit Game");
@@ -179,6 +184,16 @@ public class GUI extends JFrame {
 		turnIndicator.setText("It is currently " + "Player 1" + "'s turn!");
 		turnIndicator.setFont(new Font("Sans Serif", Font.BOLD, 14));
 		
+		lblTurnCount.setForeground(Color.WHITE);
+		lblGameCount.setForeground(Color.WHITE);
+		lblWinCount.setForeground(Color.WHITE);
+		lblPointsTitle.setForeground(Color.WHITE);
+		p1points.setForeground(Color.WHITE);
+		p2points.setForeground(Color.WHITE);
+		p3points.setForeground(Color.WHITE);
+		p4points.setForeground(Color.WHITE);
+		turnIndicator.setForeground(Color.WHITE);
+		
 		c.insets = new Insets(20,0,0,0);
 		pnlCount.add(lblTurnCount,c);
 		c.gridy = 1;
@@ -216,9 +231,9 @@ public class GUI extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		pnlGrid.setBackground(Color.GRAY);
+		pnlGrid.setBackground(Color.BLACK);
 		pnlGrid.setPreferredSize(new Dimension((x / 2), (y / 5) * 4));
-		pnlGrid.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		pnlGrid.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
 				
 		lblPlayerHand = new JLabel[20];
 		
@@ -238,7 +253,8 @@ public class GUI extends JFrame {
 		frmFrame.add(TITLE,BorderLayout.NORTH);
 		frmFrame.add(titlePanel,BorderLayout.NORTH);
 		titlePanel.add(lblTITLE, BorderLayout.CENTER);
-		titlePanel.setBackground(Color.GRAY);
+		titlePanel.setBackground(Color.darkGray);
+		titlePanel.setForeground(Color.WHITE);
 		frmFrame.add(pnlPlayer, BorderLayout.WEST);
 		frmFrame.add(pnlGrid, BorderLayout.CENTER);
 		frmFrame.add(pnlCount,BorderLayout.EAST);	
