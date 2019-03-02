@@ -17,7 +17,7 @@ import javax.swing.border.LineBorder;
 public class Grid extends JPanel{
 	
 	static Image defaultTile; static Image greenTile; static Image redTile;
-	
+	static Image P1DarkTile, P2DarkTile, P3DarkTile, P4DarkTile;
 	int columns;
 	int rows;
 	static BackgroundPanel[][] cells = new BackgroundPanel[5][5];
@@ -30,6 +30,11 @@ public class Grid extends JPanel{
 		defaultTile = ImageIO.read(new File("Assets/DarkTile.png"));
 		greenTile = ImageIO.read(new File("Assets/DarkTileGreenDot.png"));
 		redTile = ImageIO.read(new File("Assets/DarkTileRedDot.png"));
+		P1DarkTile = ImageIO.read(new File("Assets/P1DarkTile.png"));
+		P2DarkTile = ImageIO.read(new File("Assets/P2DarkTile.png"));
+		P3DarkTile = ImageIO.read(new File("Assets/P3DarkTile.png"));
+		P4DarkTile = ImageIO.read(new File("Assets/P4DarkTile.png"));
+
 		
 		columns = col;
 		rows = row;
@@ -51,12 +56,22 @@ public class Grid extends JPanel{
                 else if(i == 0) {
                 	String playerName = "Player " + j;
                 	//cells[i][j].setText(playerName);
-                	cells[i][j].setImage(defaultTile);
+                	switch (j) {
+                		case 1: cells[i][j].setImage(P1DarkTile); break;
+                		case 2: cells[i][j].setImage(P2DarkTile); break;
+                		case 3: cells[i][j].setImage(P3DarkTile); break;
+                		case 4: cells[i][j].setImage(P4DarkTile); break;
+                	}
                 }
                 else if(j == 0) {
                 	String playerName = "Player " + i;
                 	//cells[i][j].setText(playerName);
-                	cells[i][j].setImage(defaultTile);
+                	switch (i) {
+	            		case 1: cells[i][j].setImage(P1DarkTile); break;
+	            		case 2: cells[i][j].setImage(P2DarkTile); break;
+	            		case 3: cells[i][j].setImage(P3DarkTile); break;
+	            		case 4: cells[i][j].setImage(P4DarkTile); break;
+                	}
                 }
                 else if(i == 1 && j == 1) {
                 	//cells[i][j].setText(".");
@@ -97,7 +112,7 @@ public class Grid extends JPanel{
         }
 	}
 	public static void updateGrid(int p1, int p2) {
-		cells[p1][p2].setForeground(Color.GREEN);
+		cells[p1][p2].setImage(greenTile);
 
 	}
 	public String checkWin() {
@@ -137,14 +152,20 @@ public class Grid extends JPanel{
 					cells[i][j].setImage(defaultTile);
                 }
                 else if(i == 0) {
-                	String playerName = "Player. " + j;
-                	//cells[i][j].setText(playerName);
-                	cells[i][j].setImage(defaultTile);
+                	switch (j) {
+	            		case 1: cells[i][j].setImage(P1DarkTile); break;
+	            		case 2: cells[i][j].setImage(P2DarkTile); break;
+	            		case 3: cells[i][j].setImage(P3DarkTile); break;
+	            		case 4: cells[i][j].setImage(P4DarkTile); break;
+                	}
                 }
                 else if(j == 0) {
-                	String playerName = "Player " + i;
-                	//cells[i][j].setText(playerName);
-                	cells[i][j].setImage(defaultTile);
+                	switch (i) {
+            			case 1: cells[i][j].setImage(P1DarkTile); break;
+            			case 2: cells[i][j].setImage(P2DarkTile); break;
+            			case 3: cells[i][j].setImage(P3DarkTile); break;
+            			case 4: cells[i][j].setImage(P4DarkTile); break;
+                	}                
                 }
                 else if(i == 1 && j == 1) {
                 	//cells[i][j].setText(".");
