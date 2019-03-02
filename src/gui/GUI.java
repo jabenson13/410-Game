@@ -13,37 +13,42 @@ public class GUI extends JFrame {
 	JPanel pnlPlayer, TITLE, pnlCount;
 	Grid pnlGrid;
 	JButton btnDraw, btnExit;
-	JLabel lblPlayerName, lblPlayerHand[], lblWinCount, lblTITLE, lblTurnCount, lblGameCount;
+	JLabel lblPlayerName, lblPointsTitle, p1points, p2points, p3points, p4points, turnIndicator,
+		lblMiscInfo, lblPlayerHand[], lblWinCount, lblTITLE, lblTurnCount, lblGameCount;
 	int winCount = 0;
 	int x, y;
 	ArrayList<JLabel> labelList;
 	String title = "IYENGAR'S FOUR PLAYER GAME";
+	String playerName;
 	Font f;
+	Font buttons;
 	Graphics graphics;
 	BackgroundPanel titlePanel;
 	
 	public GUI(String player) {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		Dimension scaledScreenSize = new Dimension(screenSize.width-100, screenSize.height-100);
-		x = scaledScreenSize.width;
-		y = scaledScreenSize.height;
+		Dimension scaledScreenSize = new Dimension(screenSize.width / 2,screenSize.height / 2); // 640x480
+		x = scaledScreenSize.width; // generally speaking, this will be 640
+		y = scaledScreenSize.height; // generally, this will be 480
 		
 		f = new Font("Sans Serif", Font.BOLD, 40);
+		buttons = new Font("Sans Serif", Font.PLAIN, 20);
 		frmFrame = new JFrame("Numbers Game");
 				
 		//NORTH
 		TITLE = new JPanel();
 		TITLE.setLayout(new BorderLayout());
-		TITLE.setPreferredSize(new Dimension(x, y/8));
+		TITLE.setPreferredSize(new Dimension(x, 96));
+		TITLE.setSize(x, 96);
 		TITLE.setBackground(Color.GRAY);
-		TITLE.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5,Color.black));
+		TITLE.setBorder(BorderFactory.createMatteBorder(5, 0, 5, 0,Color.black));
 		try {
 			Image titleBackground = ImageIO.read(new File("background-title.png"));
 			System.out.println("load image pls");
 			titlePanel = new BackgroundPanel(titleBackground, 0);
-			TITLE.setOpaque(true);
+			TITLE.setVisible(false);
 			titlePanel.setLayout(new BorderLayout());
-			titlePanel.setPreferredSize(new Dimension(x, y/8));
+			titlePanel.setPreferredSize(new Dimension(x, 500));
 			titlePanel.setVisible(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -53,25 +58,92 @@ public class GUI extends JFrame {
 		
 		//WEST PANEL
 		pnlPlayer = new JPanel();
-		pnlPlayer.setLayout(new BorderLayout());
-		pnlPlayer.setPreferredSize(new Dimension(240, 350));
-		pnlPlayer.setBackground(Color.GRAY);
-		pnlPlayer.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		pnlPlayer.setPreferredSize(new Dimension((x / 4), (y / 5) * 4));
+		GridBagConstraints c = new GridBagConstraints();
+		pnlPlayer.setLayout(new GridBagLayout());
+		pnlPlayer.setBackground(Color.GRAY);	
+		pnlPlayer.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 0));
+		
+		//WEST PANEL CONTENTS
+		int rowheight = (pnlPlayer.getHeight() / 8);
 		btnDraw = new JButton("Draw Number");
-		btnDraw.setPreferredSize(new Dimension(100, 50));		
+		btnDraw.setPreferredSize(new Dimension((1/4)*x, 2*rowheight));	
+		
+		lblPlayerName = new JLabel();
+		pnlPlayer.add(lblPlayerName);
+		lblPlayerName.setText(player);
+		lblPlayerName.setFont(f);
+		lblMiscInfo = new JLabel();
+		lblMiscInfo.setText("TEST");
+		lblMiscInfo.setFont(f);
+		
+		c.weightx = 1.0;
+		c.insets = (new Insets (20,0,0,0));
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weighty = 0.0;
+		pnlPlayer.add(lblPlayerName,c);
+		c.insets = new Insets(0,0,0,0);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weighty = 0.0;
+		pnlPlayer.add(lblMiscInfo,c);
+		
+		
+		labelList = this.ButtonGenerator();
+		JPanel numbers = new JPanel();
+		JLabel temp = new JLabel();
+		JButton[] digits = new JButton[20];
+		numbers.setLayout(new GridLayout(4, 5));
+		numbers.setPreferredSize(new Dimension((x / 4), 1000));
+		String output = "";
+		
+		for(int i = 1; i <= 20; i++) {
+			digits[i-1] = new JButton();
+			output = Integer.toString(i);
+			digits[i-1].setText(output);
+			digits[i-1].setFont(buttons);
+			digits[i-1].setMargin(new Insets(1,1,1,1));
+			digits[i-1].setEnabled(false);
+			digits[i-1].setPreferredSize(new Dimension(numbers.getWidth() / 5, numbers.getHeight() / 4));
+			numbers.add(digits[i-1]);
+		}
+		c.gridx = 0;
+		c.gridy = 2;
+		c.weighty = 1.0;
+		c.fill = GridBagConstraints.BOTH;
+		pnlPlayer.add(numbers,c);
+		
+		c.gridx = 0;
+		c.gridy = 3;
+		c.fill = GridBagConstraints.BOTH;
+		c.weighty = 0.5;
+		pnlPlayer.add(btnDraw,c);
+		
 		
 		//EAST PANEL
 		pnlCount = new JPanel();
-		pnlCount.setLayout(new BorderLayout());
-		pnlCount.setPreferredSize(new Dimension(240, 350));
-		pnlCount.setBackground(Color.GRAY);
-		pnlCount.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		btnExit = new JButton("Exit Game");
-		btnExit.setPreferredSize(new Dimension(100, 50));
+		pnlCount.setPreferredSize(new Dimension((x / 4), (y / 5) * 4));
+		c = new GridBagConstraints();
+		pnlCount.setLayout(new GridBagLayout());
+		pnlCount.setBackground(Color.GRAY);	
 		
-		//lbl game count lbl turncount
+		//EAST PANEL CONTENTS
+		btnExit = new JButton("Exit Game");
+		btnExit.setPreferredSize(new Dimension((1/4)*x, 2*rowheight));	
+		
 		//need to add the values for these that we will show the user.
 		lblTurnCount = new JLabel();
+		c.weightx = 1.0;
+		c.insets = (new Insets (0,0,0,0));
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weighty = 0.0;
+		
 		lblTurnCount.setText("Turn Count: ");
 		lblTurnCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		
@@ -83,11 +155,65 @@ public class GUI extends JFrame {
 		lblWinCount.setText("Win Count: " + winCount);
 		lblWinCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		
+		lblPointsTitle = new JLabel();
+		lblPointsTitle.setText("Current Points: ");
+		lblPointsTitle.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		p1points = new JLabel();
+		p1points.setText("Player 1: " + " 20");
+		p1points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		p2points = new JLabel();
+		p2points.setText("Player 1: " + " 20");
+		p2points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		p3points = new JLabel();
+		p3points.setText("Player 1: " + " 20");
+		p3points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		p4points = new JLabel();
+		p4points.setText("Player 1: " + " 20");
+		p4points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		
+		turnIndicator = new JLabel();
+		turnIndicator.setText("It is currently " + "Player 1" + "'s turn!");
+		turnIndicator.setFont(new Font("Sans Serif", Font.BOLD, 14));
+		
+		c.insets = new Insets(20,0,0,0);
+		pnlCount.add(lblTurnCount,c);
+		c.gridy = 1;
+		c.insets = new Insets(0,0,0,0);
+		pnlCount.add(lblGameCount,c);
+		c.gridy = 2;
+		pnlCount.add(lblWinCount,c);
+		c.gridy = 3;
+		c.insets = new Insets(30,0,0,0);
+		pnlCount.add(lblPointsTitle,c);
+		c.gridy = 4;
+		c.insets = new Insets(0,0,0,0);
+		pnlCount.add(p1points,c);
+		c.gridy++;
+		pnlCount.add(p2points,c);
+		c.gridy++;
+		pnlCount.add(p3points,c);
+		c.gridy++;
+		pnlCount.add(p4points,c);
+		c.gridy++;
+		c.insets = new Insets(30,0,0,0);
+		pnlCount.add(turnIndicator,c);
+		c.gridy++;
+		c.fill = GridBagConstraints.BOTH;
+		c.weighty = 0.5;
+		c.insets = new Insets(30,0,0,0);
+		pnlCount.add(btnExit,c);
+		pnlCount.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 5));
+		
 		
 		//CENTER
 		pnlGrid = new Grid(5,5);
 		pnlGrid.setBackground(Color.GRAY);
-		pnlGrid.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+		pnlGrid.setPreferredSize(new Dimension((x / 2), (y / 5) * 4));
+		pnlGrid.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 				
 		lblPlayerHand = new JLabel[20];
 		
@@ -97,51 +223,6 @@ public class GUI extends JFrame {
 		lblTITLE.setForeground(Color.WHITE);
 		TITLE.add(lblTITLE, BorderLayout.CENTER);
 		
-		//WEST ADD TO PANEL
-		lblPlayerName = new JLabel();
-		lblPlayerName.setText(player);
-		lblPlayerName.setFont(f);
-		pnlPlayer.add(btnDraw, BorderLayout.SOUTH);
-		pnlPlayer.add(lblPlayerName, BorderLayout.NORTH);
-		
-		labelList = this.ButtonGenerator();
-		
-		int x = 5, y = 120;
-		for(int i = 0; i < labelList.size(); i++) {
-			JLabel temp = new JLabel();
-			temp = labelList.get(i);
-			temp.setSize(35, 35);
-			
-			pnlPlayer.add(temp);
-			x = x + 35;
-			temp.setLocation(x, y);
-			if(i == 4 || i == 9 || i == 14) {
-				x = 5;
-				y += 50;
-			}else if(i == 19){
-				temp.setLocation(200, 270);
-				temp.setForeground(Color.WHITE);
-			}
-		}
-		//pnlPlayer.add(lblPlayerName, BorderLayout.WEST);
-		
-		//EAST ADD TO PANEL
-		JLabel tempLabel = new JLabel("");
-		pnlCount.setLayout(new GridLayout(10,1));
-		pnlCount.add(lblWinCount);
-		
-		lblTurnCount.setLocation(300, 300);
-		
-		pnlCount.add(lblTurnCount);
-		pnlCount.add(lblGameCount);
-		pnlCount.add(tempLabel);
-		pnlCount.add(tempLabel);
-		pnlCount.add(tempLabel);
-		pnlCount.add(tempLabel);
-		pnlCount.add(tempLabel);
-		pnlCount.add(tempLabel);
-		pnlCount.add(tempLabel);
-		pnlCount.add(btnExit);
 
 		
 		//CENTER ADD TO PANEL
