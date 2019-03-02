@@ -210,7 +210,12 @@ public class GUI extends JFrame {
 		
 		
 		//CENTER
-		pnlGrid = new Grid(5,5);
+		try {
+			pnlGrid = new Grid(5,5);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		pnlGrid.setBackground(Color.GRAY);
 		pnlGrid.setPreferredSize(new Dimension((x / 2), (y / 5) * 4));
 		pnlGrid.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
