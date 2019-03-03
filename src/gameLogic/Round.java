@@ -42,7 +42,7 @@ public class Round {
 		
 		Turn turn = new Turn(players, flags);
 		
-		for(int index=0; index<18; index++) {
+		for(int index=0; index<initialDrawCount; index++) {
 			for(int i=0; i<playerCount; i++) {
 				players.get(i).drawNumber();
 				test = players.get(i).getHandtoString();
@@ -50,11 +50,6 @@ public class Round {
 				
 			}
 			
-		}
-		
-		
-		for(int i = 0; i <4;i++) {
-			System.out.println(players.get(i).getHandtoString());
 		}
 	}
 	
