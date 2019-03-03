@@ -238,7 +238,7 @@ public class GUI extends JFrame {
 		}
 		pnlGrid.setBackground(Color.BLACK);
 		pnlGrid.setPreferredSize(new Dimension((x / 2), (y / 5) * 4));
-		pnlGrid.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
+		//pnlGrid.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
 				
 		lblPlayerHand = new JLabel[20];
 		
@@ -280,10 +280,6 @@ public class GUI extends JFrame {
 		
 		btnDraw.addActionListener(l);
 		btnExit.addActionListener(l);
-	}
-	
-	public void updateGrid(int p1, int p2) {
-		pnlGrid.updateGrid(p1, p2);
 	}
 	
 	public void checkWin() {
@@ -330,5 +326,6 @@ public class GUI extends JFrame {
 		digits[i-1].setBackground(Color.GREEN);
 		digits[i-1].setFont(buttonsBold);
 	}
+	
 	
 }

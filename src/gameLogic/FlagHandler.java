@@ -25,6 +25,8 @@ public class FlagHandler {
 			index = (Player2.playerID - 1) * 4;
 			index = index + (Player1.playerID - 1);
 			flags.set(index, true);
+			Interface.updateGUIFlags(Player2.playerID, Player1.playerID);
+
 			//System.out.println("A flag has been updated");
 		}
 		else {
@@ -88,14 +90,15 @@ public class FlagHandler {
 			}
 			if(isDone == true) {
 				winnerID = p+1;
+				Game.players.get(p).wincount++;
+				Interface.updateWinCount(winnerID);
 				ArrayList<Integer> points = Game.getPoints();
 				int turnCount = Turn.getTurnCount();
 				points = Completion.pointUpdate(winnerID, turnCount, points);
 				Game.setPoints(points);
 				JOptionPane.showMessageDialog(null, "Player " + winnerID + " has won!!!");
-				System.out.println(winnerID + " has won the round");
-				System.out.println("Player 1 Points: " + Integer.toString(points.get(0)));
-				System.out.println("Player 2 Points: " + Integer.toString(points.get(1)));
+//				Turn.index = p;
+//				Turn.drawButton = p+1;
 				break;
 			}
 			
@@ -118,6 +121,7 @@ public class FlagHandler {
 		}
 		System.out.println(output);
 	}
+
 	
 	
 	

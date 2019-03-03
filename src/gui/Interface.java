@@ -14,11 +14,14 @@ public class Interface {
 	static ArrayList<GUI> guis = Game.getGUIs();
 	
 	public static void updateGUIFlags(int p1, int p2) {
-		Grid.updateGrid(p1, p2);
+		for(int i=0; i<guis.size(); i++) {
+			guis.get(i).pnlGrid.updateGrid(p1, p2, guis.get(i).pnlGrid);
+		}
 	}
 	public static void resetGrid() {
-		System.out.println("reset baby ##################################");
-		Grid.reset();
+		for(int i=0; i<guis.size(); i++) {
+			guis.get(i).pnlGrid.reset();
+		}
 	}
 	public static void resetWestPanel() {
 		for(int j=0; j<guis.size(); j++) {
@@ -85,6 +88,15 @@ public class Interface {
 			}
 			else {
 				guis.get(i).btnDraw.setEnabled(false);
+			}
+		}
+	}
+	public static void updateWinCount(int pID) {
+		for(int i=0; i<guis.size(); i++) {
+			if (i + 1 == pID) {
+				int wincount = guis.get(i).winCount;
+				wincount++;
+				guis.get(i).lblWinCount.setText("Win Count: " + wincount);
 			}
 		}
 	}

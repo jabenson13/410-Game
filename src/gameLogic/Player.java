@@ -14,6 +14,7 @@ public class Player {
 	ArrayList<Integer> nonDrawnNumbers;
 	int handsize;
 	int points;
+	int wincount = 0;
 	Listener myListener;
 	ArrayList<GUI> guis;
 	

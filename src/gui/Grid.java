@@ -20,7 +20,7 @@ public class Grid extends JPanel{
 	static Image P1DarkTile, P2DarkTile, P3DarkTile, P4DarkTile;
 	int columns;
 	int rows;
-	static BackgroundPanel[][] cells = new BackgroundPanel[5][5];
+	BackgroundPanel[][] cells = new BackgroundPanel[5][5];
 	static final int bord = 1;
 	static LineBorder Border = new LineBorder(Color.BLACK,bord);
 	Font f = new Font("Sans Serif", Font.BOLD, 100);
@@ -111,10 +111,11 @@ public class Grid extends JPanel{
             }
         }
 	}
-	public static void updateGrid(int p1, int p2) {
-		cells[p1][p2].setImage(greenTile);
-
+	public static Grid updateGrid(int p1, int p2, Grid g) {
+		g.cells[p1][p2].setImage(greenTile);
+		return g;
 	}
+
 	public String checkWin() {
 		// TODO Auto-generated method stub
 		String win = "";
@@ -135,7 +136,7 @@ public class Grid extends JPanel{
 		return win;
 	}
 	
-	public static void reset() {
+	public void reset() {
 		for(int i = 0; i < 5; i++) {
 			for(int j = 0; j < 5; j++) {
 				

@@ -6,7 +6,7 @@ import gui.Interface;
 public class Round {
 	int gameID;
 	int playerCount;
-	int roundCount;
+	static int roundCount;
 	static ArrayList<Boolean> flags;
 	ArrayList<Player> players;
 	int initialDrawCount = 4;
@@ -33,10 +33,16 @@ public class Round {
 		}
 		
 		// organizes players according to draw order
+//		if(roundCount == 1) {
+//			currentOrder = players;
+//		}
+//		else {
+//			currentOrder = newOrder(currentOrder);
+//		}
 		
 		Turn turn = new Turn(players, flags);
 		
-		for(int index=0; index<4; index++) {
+		for(int index=0; index<18; index++) {
 			for(int i=0; i<playerCount; i++) {
 				players.get(i).drawNumber();
 				test = players.get(i).getHandtoString();
@@ -64,6 +70,25 @@ public class Round {
 	}
 	public static ArrayList<Boolean> getFlags(){
 		return flags;
+	}
+	
+	public static ArrayList<Player> newOrder(ArrayList<Player> currentOrder){
+		ArrayList<Player> newOrder = currentOrder;
+		
+		for(int i=0; i<newOrder.size(); i++) {
+			System.out.println(currentOrder.get(i).playerID);
+		}
+		int temp = (roundCount-1)%4;
+		
+		for(int i=0; i<temp; i++) {
+			newOrder.add(currentOrder.get(i));
+			newOrder.remove(i);
+		}
+		for(int i=0; i<newOrder.size(); i++) {
+			System.out.println(newOrder.get(i).playerID);
+		}
+		
+		return newOrder;
 	}
 	
 	
