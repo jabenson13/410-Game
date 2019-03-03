@@ -29,15 +29,7 @@ public class Listener implements ActionListener {
 			flags = Play.getFlags();
 			index = Play.makePlay();
 			System.out.println("index is " + index);
-			boolean check = FlagHandler.isRoundDone(flags);
-			if (check == true) {
-				boolean test = Game.isGameDone();
-				
-				System.out.println("!!!!!!!!!!!");
-				if(test == false) {
-					Game.newRound();
-				}
-			}
+			
 			if(index == 4) {
 				Turn turn = new Turn(players, flags);
 				FlagHandler.flagsToString(flags);

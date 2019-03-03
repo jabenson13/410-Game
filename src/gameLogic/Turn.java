@@ -21,12 +21,20 @@ public class Turn {
 		Interface.setTurnCount(turncount);
 		Interface.updateDrawButton(drawButton);
 		Play.setIndex(index);
+		
+		System.out.println("Making a new play for Player 1!");
 		Play play = new Play(players.get(0), players.size(), turncount, flags, players, 0);
 	}
 	
 	public static void turnSequence(int pc) {
-		Interface.updateDrawButton(players.get(pc).playerID-1);
-		Play play = new Play(players.get(pc), players.size(), turncount, flags, players, 0);
+		if (pc == 0) {
+			
+		}
+		else {
+			Interface.updateDrawButton(players.get(pc).playerID-1);
+			System.out.println("Making a new play for Player " + (pc+1) + "! PC");
+			Play play = new Play(players.get(pc), players.size(), turncount, flags, players, 0);
+		}
 	}
 	
 	public static int getTurnCount() {

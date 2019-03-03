@@ -16,8 +16,8 @@ public class Play {
 	static int turn;
 	static ArrayList<Boolean> flags;
 	static ArrayList<Player> players;
-	static int semaphore = 0;
 	static int index = 0;
+	static boolean isDone;
 	
 	public Play (Player p, int c, int t, ArrayList<Boolean> f, ArrayList<Player> ps, int i) {
 		player = p;
@@ -27,36 +27,48 @@ public class Play {
 		players = ps;
 	}
 	
+	// index setter - the index tracks who is making the Play
 	public static void setIndex (int i) {
 		index = i;
 	}
-	public static int makePlay (){
-		int playerID = player.playerID;
+	
+	public static int makePlay (){ // once a player draws a card, this method is called to handle the drawing of the card
+		int playerID = player.playerID; // retrieves the PlayerID
+		System.out.println(playerID + "############");
 		
-		Interface.updateTurnIndicator(playerID);
-		Interface.updateDrawButton(playerID);
-		
-	//	int temp = -1;
-		// send information for player to draw a card
-		// wait for player to say push button
-		 			
-		// draw the card
-		
+		// actually draw the card
 		player.drawNumber();
 		
+		// flag check
 		for(int j=0; j<count; j++) {
-			System.out.println(players.get(j).getHandtoString());
 			if (playerID != j+1) {
 				flags = FlagHandler.isSubset(player, players.get(j), flags);
-				
-		//System.out.println(this.toString());
+				isDone = FlagHandler.isRoundDone(flags);
 			}
 		}
 		
-		index++;
-		
+		if(isDone == false) {
+			// updating the GUI accordingly
+			Interface.updateTurnIndicator(playerID);
+			Interface.updateDrawButton(playerID);
+			
+			// index to index the playcount (4 per turn)
+			index++;
+		}
+		else {
+			index = 0;
+			boolean test = Game.isGameDone();
+			if (test == true) { // Are the 10 rounds complete?
+					
+			}
+			else {
+				Game.newRound();
+			}	
+		}
 		return index;
 	}
+	
+	// method to return the flags
 	public static ArrayList<Boolean> getFlags(){
 		return flags;
 	}
