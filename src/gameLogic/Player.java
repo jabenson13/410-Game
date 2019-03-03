@@ -15,18 +15,15 @@ public class Player {
 	int handsize;
 	int points;
 	Listener myListener;
+	ArrayList<GUI> guis;
 	
 	// constructor
-	public Player(int pID, String name, int pts, Listener l) {
-		GUI myGUI = new GUI("Player " + pID);
-		myListener = l;
-		
-		myGUI.setListener(myListener);
-		myListener.setGUI(myGUI);
+	public Player(int pID, String name, int pts, Listener l, ArrayList<GUI> g) {
 		
 		playerID = pID;
 		playerName = name;
 		points = pts;
+		guis = g;
 		
 		
 		handsize = 0;
@@ -60,6 +57,8 @@ public class Player {
 		nonDrawnNumbers.remove(indexDraw);
 		drawnNumbers.add(numberValue);
 		handsize++;
+		
+		guis.get(playerID - 1).updateNumbers(numberValue);
 		
 		System.out.println(numberValue + " has been drawn!");
 		

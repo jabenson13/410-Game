@@ -88,15 +88,16 @@ public class FlagHandler {
 			}
 			if(isDone == true) {
 				winnerID = p+1;
-				
-				//hello
-				
+				ArrayList<Integer> points = Game.getPoints();
+				int turnCount = Turn.getTurnCount();
+				points = Completion.pointUpdate(winnerID, turnCount, points);
+				Game.setPoints(points);
 				JOptionPane.showMessageDialog(null, "Player " + winnerID + " has won!!!");
-				System.out.println(winnerID + " has won !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println(winnerID + " has won the round");
+				System.out.println("Player 1 Points: " + Integer.toString(points.get(0)));
+				System.out.println("Player 2 Points: " + Integer.toString(points.get(1)));
 				break;
 			}
-			
-			
 			
 		}
 		

@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.swing.JButton;
 
 import gui.GUI;
+import gui.Interface;
 
 public class Play {
 	static Player player;
@@ -31,6 +32,10 @@ public class Play {
 	}
 	public static int makePlay (){
 		int playerID = player.playerID;
+		
+		Interface.updateTurnIndicator(playerID);
+		Interface.updateDrawButton(playerID);
+		
 	//	int temp = -1;
 		// send information for player to draw a card
 		// wait for player to say push button
@@ -38,7 +43,7 @@ public class Play {
 		// draw the card
 		
 		player.drawNumber();
-					
+		
 		for(int j=0; j<count; j++) {
 			System.out.println(players.get(j).getHandtoString());
 			if (playerID != j+1) {

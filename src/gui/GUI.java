@@ -11,6 +11,7 @@ public class GUI extends JFrame {
 
 	JFrame frmFrame;
 	JPanel pnlPlayer, TITLE, pnlCount;
+	static JPanel numbers;
 	Grid pnlGrid;
 	JButton btnDraw, btnExit;
 	JLabel lblPlayerName, lblPointsTitle, p1points, p2points, p3points, p4points, turnIndicator,
@@ -22,8 +23,10 @@ public class GUI extends JFrame {
 	String playerName;
 	Font f;
 	Font buttons;
+	Font buttonsBold;
 	Graphics graphics;
 	BackgroundPanel titlePanel;
+	JButton[] digits = new JButton[20];
 	
 	public GUI(String player) {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -33,6 +36,7 @@ public class GUI extends JFrame {
 		
 		f = new Font("Sans Serif", Font.BOLD, 40);
 		buttons = new Font("Sans Serif", Font.PLAIN, 20);
+		buttonsBold = new Font("Sans Serif", Font.BOLD, 25);
 		frmFrame = new JFrame("Numbers Game");
 				
 		//NORTH
@@ -78,9 +82,9 @@ public class GUI extends JFrame {
 		lblPlayerName.setText(player);
 		lblPlayerName.setFont(f);
 		lblMiscInfo = new JLabel();
-		lblMiscInfo.setText("TEST");
+		lblMiscInfo.setText("Your Numbers: ");
 		lblMiscInfo.setForeground(Color.WHITE);
-		lblMiscInfo.setFont(f);
+		lblMiscInfo.setFont(buttons);
 		
 		c.weightx = 1.0;
 		c.insets = (new Insets (20,0,0,0));
@@ -95,13 +99,13 @@ public class GUI extends JFrame {
 		c.gridx = 0;
 		c.gridy = 1;
 		c.weighty = 0.0;
+		c.insets = new Insets(10, 0, 10, 0);
 		pnlPlayer.add(lblMiscInfo,c);
-		
+		c.insets = new Insets(0, 0, 0, 0);
 		
 		labelList = this.ButtonGenerator();
-		JPanel numbers = new JPanel();
+		numbers = new JPanel();
 		JLabel temp = new JLabel();
-		JButton[] digits = new JButton[20];
 		numbers.setLayout(new GridLayout(4, 5));
 		numbers.setPreferredSize(new Dimension((x / 4), 1000));
 		String output = "";
@@ -109,6 +113,7 @@ public class GUI extends JFrame {
 		for(int i = 1; i <= 20; i++) {
 			digits[i-1] = new JButton();
 			output = Integer.toString(i);
+			digits[i-1].setBackground(Color.WHITE);
 			digits[i-1].setText(output);
 			digits[i-1].setFont(buttons);
 			digits[i-1].setMargin(new Insets(1,1,1,1));
@@ -165,19 +170,19 @@ public class GUI extends JFrame {
 		lblPointsTitle.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		
 		p1points = new JLabel();
-		p1points.setText("Player 1: " + " 20");
+		p1points.setText("Player 1: 0");
 		p1points.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		
 		p2points = new JLabel();
-		p2points.setText("Player 1: " + " 20");
+		p2points.setText("Player 2: 0");
 		p2points.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		
 		p3points = new JLabel();
-		p3points.setText("Player 1: " + " 20");
+		p3points.setText("Player 3: 0");
 		p3points.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		
 		p4points = new JLabel();
-		p4points.setText("Player 1: " + " 20");
+		p4points.setText("Player 4: 0");
 		p4points.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		
 		turnIndicator = new JLabel();
@@ -320,4 +325,10 @@ public class GUI extends JFrame {
 		}	
 		return labelList1;
 	}
+	
+	public void updateNumbers(int i) {
+		digits[i-1].setBackground(Color.GREEN);
+		digits[i-1].setFont(buttonsBold);
+	}
+	
 }

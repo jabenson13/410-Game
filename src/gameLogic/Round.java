@@ -1,6 +1,8 @@
 package gameLogic;
 import java.util.ArrayList;
 
+import gui.Interface;
+
 public class Round {
 	int gameID;
 	int playerCount;
@@ -16,11 +18,15 @@ public class Round {
 	public Round(int rNumber, ArrayList<Player> p) {
 		playerCount = p.size();
 		roundCount = rNumber;
+		Interface.setGameCount(roundCount);
+		Interface.resetWestPanel();
 		players = p;
 		
 		flags = FlagHandler.flagReset(roundCount);
 		turns = new ArrayList<Turn>();
 		turnCount = 0;
+		Turn.turncount = 0;
+		Interface.setTurnCount(turnCount);
 		
 		for(int i=0; i<playerCount; i++) {
 			players.get(i).resetNumberPile();

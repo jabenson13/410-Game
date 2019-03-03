@@ -1,6 +1,8 @@
 package gameLogic;
 import java.util.ArrayList;
 
+import gui.Interface;
+
 
 // Test Push for Jords tikmes 2
 
@@ -12,14 +14,20 @@ public class Turn {
 	public Turn(ArrayList<Player> p, ArrayList<Boolean> f) {
 		players = p;
 		flags = f;
-		turncount++;	
-
+		turncount++;
+		
+		Interface.setTurnCount(turncount);
+		Interface.updateDrawButton(4);
 		Play.setIndex(0);
 		Play play = new Play(players.get(0), players.size(), turncount, flags, players, 0);
 	}
 	
 	public static void turnSequence(int pc) {
 		Play play = new Play(players.get(pc), players.size(), turncount, flags, players, 0);
+	}
+	
+	public static int getTurnCount() {
+		return turncount;
 	}
 	
 	
