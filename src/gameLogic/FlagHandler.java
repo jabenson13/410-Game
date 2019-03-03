@@ -90,7 +90,7 @@ public class FlagHandler {
 			}
 			if(isDone == true) {
 				winnerID = p+1;
-				Game.players.get(p).wincount++;
+				Game.players.get(p).wins++;
 				Interface.updateWinCount(winnerID);
 				ArrayList<Integer> points = Game.getPoints();
 				int turnCount = Turn.getTurnCount();

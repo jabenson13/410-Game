@@ -13,19 +13,18 @@ public class Player {
 	ArrayList<Integer> drawnNumbers;
 	ArrayList<Integer> nonDrawnNumbers;
 	int handsize;
-	int points;
-	int wincount = 0;
+	int points; int wins;
 	Listener myListener;
 	ArrayList<GUI> guis;
 	
 	// constructor
-	public Player(int pID, String name, int pts, Listener l, ArrayList<GUI> g) {
+	public Player(int pID, String name, int pts, int w, Listener l, ArrayList<GUI> g) {
 		
 		playerID = pID;
 		playerName = name;
 		points = pts;
 		guis = g;
-		
+		wins = w;
 		
 		handsize = 0;
 		resetNumberPile();

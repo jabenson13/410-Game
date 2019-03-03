@@ -30,29 +30,29 @@ public class Game {
 		players = new ArrayList<Player>();
 		list = new Listener();
 		
-		// Adds Player 1 - ID, Name, Pts, Listener, GUI list
-		p1 = new Player(1, null, 0, list, guis); // the name would be given from the initial start by the GUI - done later
+		// Adds Player 1 - ID, Name, Pts, Wins, Listener, GUI list
+		p1 = new Player(1, null, 0, 0, list, guis); // the name would be given from the initial start by the GUI - done later
 		players.add(p1);
 		guis.add(new GUI("Player " + 1));
 		guis.get(0).setListener(list);
 		list.setGUI(guis.get(0));
 		
 		// Adds Player 2
-		p2 = new Player(2, null, 0, list, guis);
+		p2 = new Player(2, null, 0, 0, list, guis);
 		players.add(p2);
 		guis.add(new GUI("Player " + 2));
 		guis.get(1).setListener(list);
 		list.setGUI(guis.get(1));
 		
 		// Adds Player 3
-		p3 = new Player(3, null, 0, list, guis);
+		p3 = new Player(3, null, 0, 0, list, guis);
 		players.add(p3);
 		guis.add(new GUI("Player " + 3));
 		guis.get(2).setListener(list);
 		list.setGUI(guis.get(2));
 		
 		// Adds Player 4
-		p4 = new Player(4, null, 0, list, guis);
+		p4 = new Player(4, null, 0, 0, list, guis);
 		players.add(p4);
 		guis.add(new GUI("Player " + 4));
 		guis.get(3).setListener(list);
