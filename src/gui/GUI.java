@@ -19,7 +19,6 @@ public class GUI extends JFrame {
 	int winCount = 0;
 	int x, y;
 	ArrayList<JLabel> labelList;
-	String title = "IYENGAR'S FOUR PLAYER GAME";
 	String playerName;
 	Font f;
 	Font buttons;
@@ -34,9 +33,9 @@ public class GUI extends JFrame {
 		x = scaledScreenSize.width; // generally speaking, this will be 640
 		y = scaledScreenSize.height; // generally, this will be 480
 		
-		f = new Font("Sans Serif", Font.BOLD, 40);
-		buttons = new Font("Sans Serif", Font.PLAIN, 20);
-		buttonsBold = new Font("Sans Serif", Font.BOLD, 25);
+		f = new Font("Impact", Font.PLAIN, 40);
+		buttons = new Font("Impact", Font.PLAIN, 20);
+		buttonsBold = new Font("Impact", Font.PLAIN, 25);
 		frmFrame = new JFrame("Numbers Game");
 				
 		//NORTH
@@ -45,10 +44,9 @@ public class GUI extends JFrame {
 		TITLE.setPreferredSize(new Dimension(x, 96));
 		TITLE.setSize(x, 96);
 		TITLE.setBackground(Color.darkGray);
-		TITLE.setBorder(BorderFactory.createMatteBorder(5, 0, 5, 0,Color.black));
+		TITLE.setBorder(BorderFactory.createMatteBorder(5, 0, 0, 0,Color.black));
 		try {
-			Image titleBackground = ImageIO.read(new File("background-title.png"));
-			System.out.println("load image pls");
+			Image titleBackground = ImageIO.read(new File("Assets/TitleCard.png"));
 			titlePanel = new BackgroundPanel(titleBackground, 0);
 			TITLE.setVisible(false);
 			titlePanel.setLayout(new BorderLayout());
@@ -154,40 +152,42 @@ public class GUI extends JFrame {
 		c.gridy = 0;
 		c.weighty = 0.0;
 		
+		Font impact = new Font("Impact", Font.PLAIN, 20);
+		
 		lblTurnCount.setText("Turn Count: ");
-		lblTurnCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		lblTurnCount.setFont(impact);
 		
 		lblGameCount = new JLabel();
 		lblGameCount.setText("Game Count: ");
-		lblGameCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		lblGameCount.setFont(impact);
 		
 		lblWinCount = new JLabel();
 		lblWinCount.setText("Win Count: " + winCount);
-		lblWinCount.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		lblWinCount.setFont(impact);
 		
 		lblPointsTitle = new JLabel();
 		lblPointsTitle.setText("Current Points: ");
-		lblPointsTitle.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		lblPointsTitle.setFont(impact);
 		
 		p1points = new JLabel();
 		p1points.setText("Player 1: 0");
-		p1points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		p1points.setFont(impact);
 		
 		p2points = new JLabel();
 		p2points.setText("Player 2: 0");
-		p2points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		p2points.setFont(impact);
 		
 		p3points = new JLabel();
 		p3points.setText("Player 3: 0");
-		p3points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		p3points.setFont(impact);
 		
 		p4points = new JLabel();
 		p4points.setText("Player 4: 0");
-		p4points.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		p4points.setFont(impact);
 		
 		turnIndicator = new JLabel();
 		turnIndicator.setText("It is currently " + "Player 1" + "'s turn!");
-		turnIndicator.setFont(new Font("Sans Serif", Font.BOLD, 14));
+		turnIndicator.setFont(new Font("Impact", Font.PLAIN, 14));
 		
 		lblTurnCount.setForeground(Color.WHITE);
 		lblGameCount.setForeground(Color.WHITE);
@@ -199,18 +199,18 @@ public class GUI extends JFrame {
 		p4points.setForeground(Color.WHITE);
 		turnIndicator.setForeground(Color.WHITE);
 		
-		c.insets = new Insets(20,0,0,0);
+		c.insets = new Insets(20,5,0,0);
 		pnlCount.add(lblTurnCount,c);
 		c.gridy = 1;
-		c.insets = new Insets(0,0,0,0);
+		c.insets = new Insets(0,5,0,0);
 		pnlCount.add(lblGameCount,c);
 		c.gridy = 2;
 		pnlCount.add(lblWinCount,c);
 		c.gridy = 3;
-		c.insets = new Insets(30,0,0,0);
+		c.insets = new Insets(30,5,0,0);
 		pnlCount.add(lblPointsTitle,c);
 		c.gridy = 4;
-		c.insets = new Insets(0,0,0,0);
+		c.insets = new Insets(0,5,0,0);
 		pnlCount.add(p1points,c);
 		c.gridy++;
 		pnlCount.add(p2points,c);
@@ -219,7 +219,7 @@ public class GUI extends JFrame {
 		c.gridy++;
 		pnlCount.add(p4points,c);
 		c.gridy++;
-		c.insets = new Insets(30,0,0,0);
+		c.insets = new Insets(30,5,0,0);
 		pnlCount.add(turnIndicator,c);
 		c.gridy++;
 		c.fill = GridBagConstraints.BOTH;
@@ -243,7 +243,7 @@ public class GUI extends JFrame {
 		lblPlayerHand = new JLabel[20];
 		
 		//NORTH ADD TO PANEL
-		lblTITLE = new JLabel(title, SwingConstants.CENTER);
+		lblTITLE = new JLabel("", SwingConstants.CENTER);
 		lblTITLE.setFont(f);
 		lblTITLE.setForeground(Color.WHITE);
 		TITLE.add(lblTITLE, BorderLayout.CENTER);
@@ -326,6 +326,7 @@ public class GUI extends JFrame {
 		digits[i-1].setBackground(Color.GREEN);
 		digits[i-1].setFont(buttonsBold);
 	}
-	
+	public void updateGrid() {
+	}
 	
 }
