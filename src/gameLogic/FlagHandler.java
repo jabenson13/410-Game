@@ -6,11 +6,16 @@ import javax.swing.JOptionPane;
 import gui.Interface;
 
 public class FlagHandler {
+	/* FlagHandler is the class that receives the ArrayList<Boolean> flags and checks the subset and win conditions
+	 * and then returns the result accordingly to the other classes. 
+	 * 
+	 *  Written by Luke and Tyler
+	 */ 
 	
 	public static ArrayList<Boolean> isSubset (Player p1, Player p2, ArrayList<Boolean> flags) {
 		Player Player1 = p1; // not necessarily Player1, it's a name for any player that is input first in the arguments
 		Player Player2 = p2; // same as Player1
-		int index = -1;
+		int index = -1; // arbitrary number - will get changed if the program is running correctly
 		
 		if(Player1.drawnNumbers.containsAll(Player2.drawnNumbers)){
 			// update flag that P1 has P2
@@ -18,7 +23,6 @@ public class FlagHandler {
 			index = index + (Player2.playerID - 1);
 			flags.set(index, true);
 			Interface.updateGUIFlags(Player1.playerID, Player2.playerID);
-			//System.out.println("A flag has been updated");
 		}
 		if (Player2.drawnNumbers.containsAll(Player1.drawnNumbers)) {
 			// update flag that P2 has P1
@@ -26,8 +30,6 @@ public class FlagHandler {
 			index = index + (Player1.playerID - 1);
 			flags.set(index, true);
 			Interface.updateGUIFlags(Player2.playerID, Player1.playerID);
-
-			//System.out.println("A flag has been updated");
 		}
 		else {
 			// nothing happens
@@ -50,28 +52,8 @@ public class FlagHandler {
 		}
 		return flags;
 	}
-//	public static boolean isRoundDone (ArrayList<Boolean> flags){
-//		ArrayList<Boolean> subset;
-//		ArrayList<Boolean> compare = new ArrayList<Boolean>();
-//		
-//		for(int i=0; i<4; i++) {
-//			compare.add(true);
-//		}
-//		for(int index = 0; index<16; index+=4) {
-//			for(int i=index; i<4; i++) {
-//				subset = new ArrayList<Boolean>();
-//				subset.add(flags.get(index + i));
-//				if (subset.equals(compare)){
-//					System.out.println("is done");
-//					return true;
-//				}
-//			}
-//		}
-//		
-//		return false;
-//	}
 	
-	public static boolean isRoundDone (ArrayList<Boolean> flags) {
+	public static boolean isRoundDone (ArrayList<Boolean> flags) { // checks if a round is concluded
 		boolean isDone = false;
 		int count = 0;
 		int winnerID = 0;
@@ -88,7 +70,7 @@ public class FlagHandler {
 					isDone = true;
 				}
 			}
-			if(isDone == true) {
+			if(isDone == true) { // win conditions
 				winnerID = p+1;
 				Game.players.get(p).incrementWins();
 				Interface.updateWinCount(p+1, Game.players.get(p).wins);
@@ -97,8 +79,6 @@ public class FlagHandler {
 				points = Completion.pointUpdate(winnerID, turnCount, points);
 				Game.setPoints(points);
 				JOptionPane.showMessageDialog(null, "Player " + winnerID + " has won!!!");
-//				Turn.index = p;
-//				Turn.drawButton = p+1;
 				break;
 			}
 			
@@ -107,7 +87,7 @@ public class FlagHandler {
 		return isDone;
 		
 	}
-	public static void flagsToString(ArrayList<Boolean> flags) {
+	public static void flagsToString(ArrayList<Boolean> flags) { // toString for the arraylist of flags
 		String output = "";
 		for(int i=0; i<flags.size(); i++) {
 			if(flags.get(i) == true) {

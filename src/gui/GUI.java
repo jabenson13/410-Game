@@ -249,17 +249,19 @@ public class GUI extends JFrame {
 		TITLE.add(lblTITLE, BorderLayout.CENTER);
 		
 
+		/*
+		 *  ADDING PANELS TO DISPLAY w/ BORDERLAYOUT
+		 *  					TITLEPANEL - NORTH
+		 * PNLPLAYER - WEST		PNLGRID - CENTER			PNLCOUNT - EAST
+		 *  
+		 */
 		
-		//CENTER ADD TO PANEL
-				
-		//FRAME ADDING PANELS
-		//frmFrame.setContentPane(new JLabel(new ImageIcon("C:\\Users\\vw0542vb\\Documents\\410\\back.jpg")));
 		frmFrame.setLayout(new BorderLayout());
 		frmFrame.add(TITLE,BorderLayout.NORTH);
 		frmFrame.add(titlePanel,BorderLayout.NORTH);
-		titlePanel.add(lblTITLE, BorderLayout.CENTER);
-		titlePanel.setBackground(Color.darkGray);
-		titlePanel.setForeground(Color.WHITE);
+			titlePanel.add(lblTITLE, BorderLayout.CENTER);
+			titlePanel.setBackground(Color.darkGray);
+			titlePanel.setForeground(Color.WHITE);
 		frmFrame.add(pnlPlayer, BorderLayout.WEST);
 		frmFrame.add(pnlGrid, BorderLayout.CENTER);
 		frmFrame.add(pnlCount,BorderLayout.EAST);	
@@ -282,7 +284,7 @@ public class GUI extends JFrame {
 		btnExit.addActionListener(l);
 	}
 	
-	public void checkWin() {
+	public void checkWin() { // Checks the win condition
 		String message = pnlGrid.checkWin();
 		
 		if(!(message.equals(""))) {
@@ -292,20 +294,10 @@ public class GUI extends JFrame {
 		}	
 	}
 	
-	public void updateWinCount() {
+	public void updateWinCount() { // incremeents the win counter
 		winCount++;
 		lblWinCount.setText("Win Count: " + winCount);
 	}
-//	public void paintTitle (Graphics g) {
-//		try {
-//			Image titleBackground = ImageIO.read(new File("background-title.png"));
-//			g.drawImage(titleBackground, TITLE.getX(), TITLE.getY(), null);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
 	
 	public ArrayList <JLabel> ButtonGenerator(){
 		
@@ -325,8 +317,6 @@ public class GUI extends JFrame {
 	public void updateNumbers(int i) {
 		digits[i-1].setBackground(Color.GREEN);
 		digits[i-1].setFont(buttonsBold);
-	}
-	public void updateGrid() {
 	}
 	
 }
