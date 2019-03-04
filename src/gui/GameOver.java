@@ -20,14 +20,14 @@ import gameLogic.Player;
 public class GameOver extends JFrame {
 
 	BackgroundPanel titlePanel;
+	JPanel pnlInfo;
 	JLabel lblTitle, lblWinner, lblSecond, lblThird, lblFourth;
-	ArrayList<Player> WinnerOrder;
 	Font f;
 	int player1, player2, player3, player4;
 	
 	public GameOver(ArrayList<Player> players, Dimension dim) {
 		int x = dim.width;
-		
+		int y = dim.height;
 		
 		try {
 			Image titleBackground = ImageIO.read(new File("Assets/TitleCard.png"));
@@ -42,48 +42,48 @@ public class GameOver extends JFrame {
 			e.printStackTrace();
 		}
 		
+		pnlInfo = new JPanel();
+		
 		f = new Font("Impact", Font.PLAIN, 40);
 		
 		lblTitle = new JLabel();
 		lblTitle.setText("Game Over");
 		
 		lblWinner = new JLabel();
-		lblWinner.setText(players.get(0).getName());
+		lblWinner.setText("Winner: " + players.get(0).getName());
 		
 		lblSecond = new JLabel();
-		lblSecond.setText(players.get(1).getName());
+		lblSecond.setText("2nd place: " + players.get(1).getName());
 		
 		lblThird = new JLabel();
-		lblThird.setText(players.get(2).getName());
+		lblThird.setText("3rd Place: " + players.get(2).getName());
 		
 		lblFourth = new JLabel();
-		lblFourth.setText(players.get(3).getName());
+		lblFourth.setText("4th Place: " + players.get(3).getName());
 		
 		lblTitle.setFont(f);
 		lblWinner.setFont(f);
 		lblSecond.setFont(f);
 		lblThird.setFont(f);
 		lblFourth.setFont(f);
+			
+		pnlInfo.setLayout(null);
+		pnlInfo.add(lblTitle);
 		
-		this.add(titlePanel);
-		this.add(lblTitle);
-		this.add(lblWinner);
-		this.add(lblSecond);
-		this.add(lblThird);
-		this.add(lblFourth);
+		lblTitle.setLocation(x / 2, 0);
+		
+		pnlInfo.add(lblWinner);
+		pnlInfo.add(lblSecond);
+		pnlInfo.add(lblThird);
+		pnlInfo.add(lblFourth);
+		
+		this.add(titlePanel, BorderLayout.NORTH);
+		this.add(pnlInfo, BorderLayout.SOUTH);
 		
 		this.setPreferredSize(dim);
 		this.pack();
 		this.setVisible(true);
 		
-
-	}
-	
-	public ArrayList<Player> FinalGameOver() {
-		
-		//WinnerOrder.
-		
-		
-		return WinnerOrder;
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }
