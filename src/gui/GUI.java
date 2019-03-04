@@ -319,4 +319,9 @@ public class GUI extends JFrame {
 		digits[i-1].setFont(buttonsBold);
 	}
 	
+	public Point getLoc() {
+		Point loc = getLocation();
+		return loc;
+	}
+	
 }

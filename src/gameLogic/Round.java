@@ -8,7 +8,7 @@ public class Round {
 	static int roundCount;				// tracks the round count
 	static ArrayList<Boolean> flags;	// arraylist of boolean flags - true indicating a green dot, false for a red dot
 	ArrayList<Player> players;			// arraylist of players
-	int initialDrawCount = 18;			// how many numbers a player draws at the beginning of the round
+	int initialDrawCount = 4;			// how many numbers a player draws at the beginning of the round
 	int turnCount;						// tracks the turn count
 	
 	// constructor for Round

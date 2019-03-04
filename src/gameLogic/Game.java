@@ -81,7 +81,7 @@ public class Game {
 	
 	// Simple boolean check to see if the game is done
 	public static boolean isGameDone() { 
-		if(roundCount == 2) { 
+		if(roundCount == maxRounds) { 
 			// if incrementing round count = max rounds (10) .. return true
 			return true;
 		}

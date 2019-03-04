@@ -3,11 +3,14 @@ import gui.GUI;
 import gui.GameOver;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
 
 public class Completion {
+	static Point point;
+	
 	public static ArrayList<Integer> pointUpdate (int pID, int turnCount, ArrayList<Integer> currentPts) {
 		for(int i=0; i<currentPts.size(); i++) {
 			if (i == (pID - 1)) {
@@ -45,7 +48,10 @@ public class Completion {
 		for(int i = 0; i < temp.length; i++) {
 			sortedPlayers.add(temp[i]);
 		}
-		
-		GameOver finalScores = new GameOver(sortedPlayers, scaledScreenSize);
+		for(int i=0; i<Game.guis.size(); i++) {
+			point = Game.guis.get(i).getLoc();
+			GameOver finalScores = new GameOver(sortedPlayers, scaledScreenSize, point);
+			Game.guis.get(i).setVisible(false);
+		}
 	}
 }

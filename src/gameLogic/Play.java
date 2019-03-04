@@ -1,5 +1,6 @@
 package gameLogic;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class Play {
 			index = 0;
 			boolean test = Game.isGameDone();
 			if (test == true) { // Are the 10 rounds complete?
-					Completion.gameOver(players);
+				Completion.gameOver(players);
 			}
 			else {
 				Game.newRound();
