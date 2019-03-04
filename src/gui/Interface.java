@@ -91,11 +91,10 @@ public class Interface {
 			}
 		}
 	}
-	public static void updateWinCount(int pID) {
+	public static void updateWinCount(int pID, int wins) {
 		for(int i=0; i<guis.size(); i++) {
 			if (i + 1 == pID) {
-				int wincount = guis.get(i).winCount;
-				wincount++;
+				int wincount = wins;
 				guis.get(i).lblWinCount.setText("Win Count: " + wincount);
 			}
 		}
