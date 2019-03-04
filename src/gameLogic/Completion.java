@@ -33,7 +33,7 @@ public class Completion {
 		}
 		
 		for (int i = 0; i < temp.length; i++) {
-		    for (int j = 0; j < temp.length; j++) {
+		    for (int j = 0; j > temp.length; j++) {
 		        if (temp[i].getPoints() > temp[j].getPoints()) {
 		            Player tmp = temp[i];
 		            temp[i] = temp[j];

@@ -2,7 +2,9 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,35 +54,48 @@ public class GameOver extends JFrame {
 		lblTitle.setText("Game Over");
 		
 		lblWinner = new JLabel();
-		lblWinner.setText("Winner: " + players.get(0).getName());
+		lblWinner.setText("Winner: " + players.get(0).getName() + " with " + players.get(0).getPoints());
 		
 		lblSecond = new JLabel();
-		lblSecond.setText("2nd place: " + players.get(1).getName());
+		lblSecond.setText("2nd place: " + players.get(1).getName() + " with " + players.get(1).getPoints());
 		
 		lblThird = new JLabel();
-		lblThird.setText("3rd Place: " + players.get(2).getName());
+		lblThird.setText("3rd Place: " + players.get(2).getName() + " with " + players.get(2).getPoints());
 		
 		lblFourth = new JLabel();
-		lblFourth.setText("4th Place: " + players.get(3).getName());
+		lblFourth.setText("4th Place: " + players.get(3).getName() + " with " + players.get(3).getPoints());
 		
 		lblTitle.setFont(f);
+		lblTitle.setForeground(Color.WHITE);
+		
 		lblWinner.setFont(f);
+		lblWinner.setForeground(Color.WHITE);
+		
 		lblSecond.setFont(f);
+		lblSecond.setForeground(Color.WHITE);
+		
 		lblThird.setFont(f);
+		lblThird.setForeground(Color.WHITE);
+		
 		lblFourth.setFont(f);
-			
-		pnlInfo.setLayout(null);
-		pnlInfo.add(lblTitle);
+		lblFourth.setForeground(Color.WHITE);
 		
-		lblTitle.setLocation(x / 2, 0);
+		pnlInfo.setLayout( new BoxLayout(pnlInfo, 0));
+		pnlInfo.setBackground(Color.DARK_GRAY);
 		
-		pnlInfo.add(lblWinner);
-		pnlInfo.add(lblSecond);
-		pnlInfo.add(lblThird);
-		pnlInfo.add(lblFourth);
+		Box box = Box.createVerticalBox();
+		box.setAlignmentX(Component.CENTER_ALIGNMENT);
+		box.add(lblTitle);
+		box.add(lblWinner);
+		box.add(lblSecond);
+		box.add(lblThird);
+		box.add(lblFourth);
 		
+		pnlInfo.add(box, BorderLayout.CENTER);
+		
+		titlePanel.setBackground(Color.DARK_GRAY);
 		this.add(titlePanel, BorderLayout.NORTH);
-		this.add(pnlInfo, BorderLayout.SOUTH);
+		this.add(pnlInfo, BorderLayout.CENTER);
 		
 		this.setPreferredSize(dim);
 		this.pack();
