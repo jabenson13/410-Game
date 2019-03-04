@@ -1,9 +1,11 @@
 package gameLogic;
 import gui.GUI;
+import gui.GameOver;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+
 
 public class Completion {
 	public static ArrayList<Integer> pointUpdate (int pID, int turnCount, ArrayList<Integer> currentPts) {
@@ -44,6 +46,6 @@ public class Completion {
 			sortedPlayers.add(temp[i]);
 		}
 		
-		gui.GameOver finalScores = new gui.GameOver(sortedPlayers, scaledScreenSize);
+		GameOver finalScores = new GameOver(sortedPlayers, scaledScreenSize);
 	}
 }
