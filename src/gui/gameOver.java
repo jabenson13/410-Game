@@ -21,10 +21,25 @@ public class gameOver extends JFrame {
 
 	BackgroundPanel titlePanel;
 	JLabel lblTitle, lblWinner, lblSecond, lblThird, lblFourth;
+	ArrayList<Player> WinnerOrder;
 	Font f;
+	int player1, player2, player3, player4;
 	
 	public gameOver(ArrayList<Player> players, Dimension dim) {
 		int x = dim.width;
+		
+		WinnerOrder = players;
+		
+			player1 = players.get(0).getPoints();
+			System.out.println("Player " + player1);
+			player2 = players.get(0).getPoints();
+			System.out.println("Player " + player2);
+			player3 = players.get(0).getPoints();
+			System.out.println("Player " + player3);
+			player4 = players.get(0).getPoints();
+			System.out.println("Player " + player4);
+		
+		
 		
 		try {
 			Image titleBackground = ImageIO.read(new File("Assets/TitleCard.png"));

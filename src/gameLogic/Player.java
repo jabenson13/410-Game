@@ -92,4 +92,7 @@ public class Player {
 	public String getName() {
 		return playerName;
 	}
+	public int getPoints() {
+		return points;
+	}
 }
