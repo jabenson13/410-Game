@@ -19,7 +19,7 @@ public class Completion {
 		return currentPts;
 	}
 	
-	public void gameOver(ArrayList<Player> p) {
+	public static void gameOver(ArrayList<Player> p) {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension scaledScreenSize = new Dimension(screenSize.width / 2,screenSize.height / 2); 
 		
@@ -44,6 +44,6 @@ public class Completion {
 			sortedPlayers.add(temp[i]);
 		}
 		
-		gameOver finalScores = new gameOver(sortedPlayers, scaledScreenSize);
+		gui.GameOver finalScores = new gui.GameOver(sortedPlayers, scaledScreenSize);
 	}
 }

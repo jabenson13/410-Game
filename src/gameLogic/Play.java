@@ -59,7 +59,7 @@ public class Play {
 			index = 0;
 			boolean test = Game.isGameDone();
 			if (test == true) { // Are the 10 rounds complete?
-					
+					Completion.gameOver(players);
 			}
 			else {
 				Game.newRound();

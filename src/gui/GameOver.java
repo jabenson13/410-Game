@@ -1,4 +1,4 @@
-package gameLogic;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,9 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gui.BackgroundPanel;
+import gameLogic.Player;
 
-public class gameOver extends JFrame {
+public class GameOver extends JFrame {
 
 	BackgroundPanel titlePanel;
 	JLabel lblTitle, lblWinner, lblSecond, lblThird, lblFourth;
@@ -25,20 +25,8 @@ public class gameOver extends JFrame {
 	Font f;
 	int player1, player2, player3, player4;
 	
-	public gameOver(ArrayList<Player> players, Dimension dim) {
+	public GameOver(ArrayList<Player> players, Dimension dim) {
 		int x = dim.width;
-		
-		WinnerOrder = players;
-		
-			player1 = players.get(0).getPoints();
-			System.out.println("Player " + player1);
-			player2 = players.get(1).getPoints();
-			System.out.println("Player " + player2);
-			player3 = players.get(2).getPoints();
-			System.out.println("Player " + player3);
-			player4 = players.get(3).getPoints();
-			System.out.println("Player " + player4);
-		
 		
 		
 		try {
@@ -87,5 +75,15 @@ public class gameOver extends JFrame {
 		this.setPreferredSize(dim);
 		this.pack();
 		this.setVisible(true);
+		
+
+	}
+	
+	public ArrayList<Player> FinalGameOver() {
+		
+		//WinnerOrder.
+		
+		
+		return WinnerOrder;
 	}
 }
