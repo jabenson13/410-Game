@@ -88,4 +88,8 @@ public class Player {
 		
 		return output;
 	}
+	
+	public String getName() {
+		return playerName;
+	}
 }
