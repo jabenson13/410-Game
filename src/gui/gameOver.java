@@ -32,11 +32,11 @@ public class gameOver extends JFrame {
 		
 			player1 = players.get(0).getPoints();
 			System.out.println("Player " + player1);
-			player2 = players.get(0).getPoints();
+			player2 = players.get(1).getPoints();
 			System.out.println("Player " + player2);
-			player3 = players.get(0).getPoints();
+			player3 = players.get(2).getPoints();
 			System.out.println("Player " + player3);
-			player4 = players.get(0).getPoints();
+			player4 = players.get(3).getPoints();
 			System.out.println("Player " + player4);
 		
 		
